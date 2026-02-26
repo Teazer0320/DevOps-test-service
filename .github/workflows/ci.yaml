@@ -1,39 +1,32 @@
 name: C++ CI with Docker Hub
 
-# Trigger the workflow on each push or pull request to the main branch
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Check out the source code from GitHub
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Step 2: Log in to Docker Hub using secrets set in GitHub
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
+        # Using the secrets we configured earlier
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # Step 3: Build and push the Docker image
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
         context: .
         push: true
-        # Replace 'your-dockerhub-username' with your actual username
-        # We tag the image as 'latest' for now
+        # Make sure your Docker Hub username is correct in the Secret
         tags: ${{ secrets.DOCKER_USERNAME }}/devops-test-service:latest
 
-    # Step 4: Verify the build (Optional but professional)
+    # Optional: This step will only run if the build is successful
     - name: Image digest
-      run: echo ${{ steps.docker_build.outputs.digest }}
-
+      run: echo "Image has been pushed successfully!"
