@@ -1,5 +1,5 @@
 # 使用輕量級的編譯環境
-FROM gcc:12.2.0-bookworm as builder
+FROM gcc:12 as builder
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 RUN g++ -o myapp main.cpp
