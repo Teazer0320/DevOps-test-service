@@ -1,3 +1,4 @@
+/* Example code for CI/CD */
 #include <iostream>
 
 int main() {
