@@ -2,7 +2,8 @@
 #include <iostream>
 
 int main() {
-    std::cout << "Hello, DevOps World! (Version 1.0)" << std::endl;
+    // std::cout << "Hello, DevOps World! (Version 1.0)" << std::endl;
+    std::cout << "Hello, DevOps World! (Version 2.0)." << std::endl;
     while (true) {};
     return 0;
 }
