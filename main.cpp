@@ -7,7 +7,7 @@
 #include <netinet/in.h>
 
 const int PORT = 8080;
-const std::string VERSION = "2.0";
+const std::string VERSION = "1.0.1";
 
 int main() {
     int server_fd, client_fd;
